@@ -2,7 +2,7 @@
 Hi, this is Johnny, I'm an Engineering student. Life and university studies are expensive and the work is hard. My repositories are free, please consider rewarding me. Thank you.
 
 ### 4 ways to support me:
-1. [Reward me on PayPal](https://www.paypal.me/johnnync13)
+1. [Reward me on PayPal](https://www.paypal.me/johnnync13) or entry to my pool and win money [Kuailian](http://app.kuailiandp.com/auth/register/ref/a03805be-c118-4962-9bbe-87dfceb67802) or my WeChat ID: johnnync13
 2. Donate BTC: 3R13Ye85VwuzrBEJf32dZgREHsFsFpoG4m
 3. Donate ETH: 0x13f430523CAB662faA6924D6fbA4FdFA973A693b
 4. Please give me feedback: Open (or help with) [issues](https://github.com/johnnync13/Xiaomi-Mi-Air/issues) or fork and send a pull request if you find some improvements to be made!
@@ -13,14 +13,18 @@ Hi, this is Johnny, I'm an Engineering student. Life and university studies are 
 * macOS 10.15 Catalina
 
 ### What do I need?
-* Xiaomi Notebook Air 2018 13.3" i5-8250u / i7-8550u
+* Xiaomi Notebook Air 2018 13.3" i5-8250u / i7-8550u ([2017 model](https://github.com/johnnync13/Xiaomi-Mi-Air/issues/157) and [2019 model with MX250](https://github.com/johnnync13/Xiaomi-Mi-Air/issues/135) also reported to be working)
 * macOS or windows PC to create the install USB
 * 8GB or larger USB stick (USB3 preferred for speed)
 * Latest copy of these files (https://github.com/johnnync13/Xiaomi-Mi-Air/releases)
 * (optional for multiboot) Second (M.2 SATA) SSD installed inside the laptop.
 * (possibly) USB mouse for install until trackpad is working
 * (possibly) For macOS 10.15: a natively supported (e.g. Apple) USB Ethernet adapter for installation ([Apple](https://www.apple.com/shop/product/MC704LL/A/apple-usb-ethernet-adapter) / [Amazon](https://www.amazon.com/s?k=AX88179) / [Ebay](https://www.ebay.com/sch/i.html?_nkw=AX88179))
-* (possibly) If you have an android phone, you can tether wifi from it using this kext [HoRNDIS](https://joshuawise.com/horndis), load it in the recovery terminal/Terminal.app using kextload and connect your phone via cable
+* (possibly) If you have an android phone, you can tether wifi from it using the Tools/HoRNDIS.kext. Put it on a USB stick, load it in the recovery terminal/Terminal.app using kextload and connect your phone via cable, e.g. (replace 'USB' with your usb stick name):
+```
+sudo kextload -v /Volumes/USB/HoRNDIS.kext
+```
+* (possibly) If your laptop came with a PM981 SSD, consider replacing it with a different one (Google Hackintosh compatibility) or install macOS on a separate (M.2 SATA) SSD. There's known issues with the PM981 and macOS. This is currently 'fixed' with the NVMeFix kext.
 
 ### What is Working?
 * Native CPU Power Management
@@ -35,11 +39,12 @@ Hi, this is Johnny, I'm an Engineering student. Life and university studies are 
 * Brightness keys
 * Built-in camera
 * Built-in mic 
-* Bluetooth Intel (no Airdrop, Handoff or Continuity on Intel BT)
 * FileVault Disk encryption (Always make a backup before switching on!!!)
 
 ### Half working:
-* [Wifi Intel](https://github.com/johnnync13/Xiaomi-Mi-Air/tree/master/WIFI) (still buggy for now)
+* [Wifi Intel](https://github.com/johnnync13/Xiaomi-Mi-Air/tree/master/WIFI) Is stable now. Only implemented 11n stack but in the future 11ac y 11ax will be implemented. You only need install HeliPort app.
+* Bluetooth Intel (no Airdrop, Handoff or Continuity on Intel BT)
+**Caution: Intel Bluetooth kexts can cause frequent kernel panics / crashes when using sleep/wake. This now is fixed on the last version kext
 
 ### Not working:
 * Nvidia GPU (MX150/GP108) (Not supported under macOS and probably never will be)
@@ -244,7 +249,7 @@ sudo diskutil mount /dev/disk0s1
 ### (optional) Fixing iMessage, FaceTime etc.
 This can be a bit of a challenge, and outside of the scope of this repo, but if you want to, have a look here:<br />
 [An iDiot's Guide To iMessage (clover)](https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/)<br />
-[Fixing iServices (OpenCore)](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/extras/iservices)
+[Fixing iServices (OpenCore)](https://dortania.github.io/OpenCore-Desktop-Guide/post-install/iservices.html)
 
 ### (optional) WiFi
 Still very buggy, but improving fast. Have a look [here](https://github.com/johnnync13/Xiaomi-Mi-Air/tree/master/WIFI)
@@ -302,4 +307,3 @@ Use these files and this howto at your own risk. I'm not responsible in any way 
 - [alexandred](https://github.com/alexandred) Updated [Voodooi2c](https://github.com/alexandred/VoodooI2C) for maintenance
 
 - [Community Chinese](https://github.com/a565109863) Updated [Intel Wifi](https://bbs.pcbeta.org/forum.php?mod=viewthread&tid=1838489) for intel wifi and tutorial
-
